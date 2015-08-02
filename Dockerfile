@@ -11,4 +11,13 @@ ADD ${HUGO_URL} ./
 
 RUN tar xzf ${HUGO_ARCHIVE} && \
     mv ${HUGO_HANDLE}/${HUGO_HANDLE} /usr/local/bin/hugo && \
-    rm -r ${HUGO_ARCHIVE} ${HUGO_HANDLE}
+    rm -r ${HUGO_ARCHIVE} ${HUGO_HANDLE} && \
+    mkdir -p build/source build/target
+
+VOLUME /hugo/build/source
+VOLUME /hugo/build/target
+
+COPY build.sh ./
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["build.sh"]
