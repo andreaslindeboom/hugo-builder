@@ -1,4 +1,4 @@
 #!/bin/bash
-hugo --source=build/source --destination=../tmp
-tar czf build/target/built-package.tar.gz -C build/tmp .
-rm -rf build/tmp
+hugo --source=src --destination=../tmp
+tar czf dest/site.tar.gz -C tmp .
+rm -rf tmp
